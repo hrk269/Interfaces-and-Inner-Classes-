@@ -18,7 +18,7 @@
         - The `Chef` should make one `PotRoast`, one `Baguette`, one `RoastedSweetPotato` and second `Baguette` in that order.
         - The `Oven`'s initial temperature should be `300`
         - Note, to become a five-star chef takes high precision when cooking.  Unfortunately the `Oven` isn't perfectly calibrated and so the temperature set often fluctuates.
-        - Note, every great chef as a great sous-chef.  Use your `SousChef` wisely!
+        - Note, every great chef has a great sous-chef.  Use your [SousChef](src/main/java/edu/nyu/cs9053/homework5/SousChef.java) wisely!
         - Note, you need not (and must not) use `Thread`/`synchronized` or any other concurrency pattern for this assignment. They exist within the provided code but you will not need to program them yourself (this assignment can be done 100% with things we've already learned in lecture).     
     - Fix the leaky kitchen [Faucet](src/main/java/edu/nyu/cs9053/homework5/memory/Faucet.java) such that you eliminate the inner class leak.
 
