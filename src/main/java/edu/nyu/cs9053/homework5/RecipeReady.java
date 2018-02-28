@@ -21,8 +21,8 @@ public class RecipeReady implements RecipeReadyCallback {
 		    throw new IllegalArgumentException("unit cannot be null");
 		}
 		recipe.adjust(unit, value, ovenTemperature);
-		}
-	    };
+	    }
+	};
 	this.oven.cook(recipe, recipeTimer, true);
 	while (!recipe.isRecipeDone()) {
 	    this.oven.cook(recipe, recipeTimer, false);
