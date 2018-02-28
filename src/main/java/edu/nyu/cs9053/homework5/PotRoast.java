@@ -35,17 +35,17 @@ public class PotRoast implements Recipe {
         }
     	double timeAdjustment = (double) ((ovenTemperature * amount) / oven.getSetTemperature());
     	if (unit == Time.Minutes) {
-    		timeAdjustment = (double) timeAdjustment * 60d;
+    	    timeAdjustment = (double) timeAdjustment * 60d;
     	}
     	this.timeLeftSeconds = this.timeLeftSeconds - timeAdjustment;
     }
 
     @Override public boolean isRecipeDone() {
     	if (getRemainingSecondsUntilDone() <= 0) {
-    		return true;
+    	    return true;
     	}
     	else {
-    		return false;
-    	}
-   	}
+            return false;
+        }
+    }
 }

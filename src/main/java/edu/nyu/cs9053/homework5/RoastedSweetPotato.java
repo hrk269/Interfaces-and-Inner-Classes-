@@ -31,21 +31,21 @@ public class RoastedSweetPotato implements Recipe {
 
     @Override public void adjust(Time unit, int amount, int ovenTemperature) {
     	if (unit == null) {
-    		throw new IllegalArgumentException("unit cannot be null");
+            throw new IllegalArgumentException("unit cannot be null");
     	}
     	double timeAdjustment = (double) ((ovenTemperature * amount) / oven.getSetTemperature());
     	if (unit == Time.Minutes) {
-    		timeAdjustment = (double) timeAdjustment * 60d;
+    	    timeAdjustment = (double) timeAdjustment * 60d;
     	}
     	this.timeLeftSeconds = this.timeLeftSeconds - timeAdjustment;
     }
 
     @Override public boolean isRecipeDone() {
     	if (getRemainingSecondsUntilDone() <= 0) {
-    		return true;
+    	    return true;
     	}
     	else {
-    		return false;
+    	    return false;
     	}
     }
 }

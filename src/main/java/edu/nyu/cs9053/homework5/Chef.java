@@ -21,11 +21,11 @@ public class Chef {
         this.oven = oven;
     }
 
-	public void cookRecipe(SousChef sousChef, Recipe recipe) {
-		if ((recipe == null) || (sousChef == null)) {
-			throw new IllegalArgumentException("Recipe or sousChef cannot be null");
+    public void cookRecipe(SousChef sousChef, Recipe recipe) {
+        if ((recipe == null) || (sousChef == null)) {
+            throw new IllegalArgumentException("Recipe or sousChef cannot be null");
         }
         recipe.initializeFromOven(this.oven);
         sousChef.prepare(recipe, new RecipeReady(this.oven, recipe));
-	}
+    }
 }
