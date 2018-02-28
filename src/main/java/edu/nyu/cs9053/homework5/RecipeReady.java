@@ -13,15 +13,15 @@ public class RecipeReady implements RecipeReadyCallback {
 
 	@Override public void recipeReadyToCook(Recipe recipe) {
 		if (recipe == null) {
-            throw new IllegalArgumentException("recipe cannot be null");
-        }
+		    throw new IllegalArgumentException("recipe cannot be null");
+		}
 		Timer recipeTimer = new Timer() {
 			@Override public void update(Time unit, int value, int ovenTemperature) {
 				if (unit == null) {
-            		throw new IllegalArgumentException("unit cannot be null");
-        		}
-				recipe.adjust(unit, value, ovenTemperature);
-			}
+					throw new IllegalArgumentException("unit cannot be null");
+				}
+			recipe.adjust(unit, value, ovenTemperature);
+		    }
 		};
 		this.oven.cook(recipe, recipeTimer, true);
 		while (!recipe.isRecipeDone()) {

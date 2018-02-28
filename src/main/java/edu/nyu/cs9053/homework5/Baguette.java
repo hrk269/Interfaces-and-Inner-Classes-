@@ -45,10 +45,10 @@ public class Baguette implements Recipe {
 
     @Override public boolean isRecipeDone() {
     	if (getRemainingSecondsUntilDone() <= 0) {
-    		return true;
+            return true;
     	}
     	else {
-    		return false;
+            return false;
     	}
     }
 }

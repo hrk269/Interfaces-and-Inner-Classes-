@@ -2,7 +2,7 @@ package edu.nyu.cs9053.homework5;
 
 public class RoastedSweetPotato implements Recipe {
 
-	private double timeToCook;
+    private double timeToCook;
 
     private final int foodVolume;
 
@@ -31,8 +31,8 @@ public class RoastedSweetPotato implements Recipe {
 
     @Override public void adjust(Time unit, int amount, int ovenTemperature) {
     	if (unit == null) {
-            throw new IllegalArgumentException("unit cannot be null");
-        }
+    		throw new IllegalArgumentException("unit cannot be null");
+    	}
     	double timeAdjustment = (double) ((ovenTemperature * amount) / oven.getSetTemperature());
     	if (unit == Time.Minutes) {
     		timeAdjustment = (double) timeAdjustment * 60d;
@@ -47,5 +47,5 @@ public class RoastedSweetPotato implements Recipe {
     	else {
     		return false;
     	}
-   	}
+    }
 }

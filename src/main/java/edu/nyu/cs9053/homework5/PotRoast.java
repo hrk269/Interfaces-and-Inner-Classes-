@@ -2,7 +2,7 @@ package edu.nyu.cs9053.homework5;
 
 public class PotRoast implements Recipe {
 
-	private double timeToCook;
+    private double timeToCook;
 
     private final int foodVolume;
 
@@ -16,7 +16,7 @@ public class PotRoast implements Recipe {
     	this.foodVolume = 10000;
     }
 
-	@Override public void initializeFromOven(Oven oven) {
+    @Override public void initializeFromOven(Oven oven) {
     	this.timeToCook = oven.getSetTemperature() / 5;
     	this.timeLeftSeconds = this.timeToCook * 60d;
     }
@@ -26,7 +26,7 @@ public class PotRoast implements Recipe {
     }
 
     @Override public Double getRemainingSecondsUntilDone() {
-       	return timeLeftSeconds;
+    	return timeLeftSeconds;
     }
 
     @Override public void adjust(Time unit, int amount, int ovenTemperature) {
