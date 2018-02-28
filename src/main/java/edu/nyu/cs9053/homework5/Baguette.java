@@ -6,7 +6,7 @@ public class Baguette implements Recipe {
 
     private final int foodVolume;
 
-    private final float exponentialRate;
+    private final double exponentialRate;
 
     private final Oven oven;
 
@@ -16,11 +16,11 @@ public class Baguette implements Recipe {
         this.oven = oven;
         this.initializeFromOven(oven);
         this.foodVolume = 2000;
-        this.exponentialRate = 0.5f;
+        this.exponentialRate = 0.5d;
     }
 
     @Override public void initializeFromOven(Oven oven) {
-        this.timeToCook = oven.getSetTemperature() / 10;
+        this.timeToCook = Math.log(0.01d / oven.getSetTemperature()) / (- exponentialRate);
         this.timeLeftSeconds = this.timeToCook * 60d;
     }
 
@@ -36,15 +36,15 @@ public class Baguette implements Recipe {
         if (unit == null) {
             throw new IllegalArgumentException("unit cannot be null");
         }
-        double timeAdjustment = (double) ((ovenTemperature * amount) / oven.getSetTemperature());
-        if (unit == Time.Minutes) {
-            timeAdjustment = (double) timeAdjustment * 60d;
+        if (unit == Time.Seconds) {
+            amount = amount / 60;
         }
+        double timeAdjustment = (double) (ovenTemperature * Math.exp(-exponentialRate * amount));
         this.timeLeftSeconds = this.timeLeftSeconds - timeAdjustment;
     }
 
     @Override public boolean isRecipeDone() {
-    	if (getRemainingSecondsUntilDone() <= 0) {
+    	if (getRemainingSecondsUntilDone() <= 0.01d) {
             return true;
     	}
     	else {
