@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class Faucet {
 
-   private class Drain {
+   private static class Drain {
 
         private void drain(Water water) {
             water.consume();
@@ -22,24 +22,23 @@ public class Faucet {
 
     }
 
-    private class Water {
+    private static class Water {
 
-        private final AtomicInteger remaining;
+        private static final AtomicInteger REMAINING = new AtomicInteger(FLOW.length);
 
         private Water() {
-            this.remaining = new AtomicInteger(flow.length);
         }
 
         private int consume() {
-            int current = remaining.get();
-            int consumed = ((int) ((1d / (double) (random.nextInt(4) + 1)) * current)) + 1;
+            int current = REMAINING.get();
+            int consumed = ((int) ((1d / (double) (RANDOM.nextInt(4) + 1)) * current)) + 1;
             int remainder = Math.max(0, current - consumed);
-            remaining.set(remainder);
+            REMAINING.set(remainder);
             return consumed;
         }
 
         private boolean dry() {
-            return remaining.get() == 0;
+            return REMAINING.get() == 0;
         }
 
     }
@@ -84,24 +83,22 @@ public class Faucet {
         }
     }
 
-    private final Random random;
+    private static final Random RANDOM = new Random();
 
-    private final Drain drain;
+    private static final int INITIAL = RANDOM.nextInt(MAX_FLOW) + 1;
 
-    private final Object[] flow;
+    private static final Drain DRAIN = new Drain();
+
+    private static final Object[] FLOW = new Object[INITIAL];
 
     public Faucet(Random random) {
-        this.random = random;
-        this.drain = new Drain();
-        int initial = random.nextInt(MAX_FLOW) + 1;
-        this.flow = new Object[initial];
-        for (int i = 0; i < initial; i++) {
-            this.flow[i] = new Object();
+        for (int i = 0; i < INITIAL; i++) {
+            this.FLOW[i] = new Object();
         }
     }
 
     public void drain(Water water) {
-        this.drain.drain(water);
+        this.DRAIN.drain(water);
     }
 
     public Water turnOn() {
