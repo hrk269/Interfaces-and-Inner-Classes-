@@ -46,6 +46,6 @@ public class PotRoast implements Recipe {
     	}
     	else {
             return false;
-    	}
-   	}
+        }
+    }
 }
