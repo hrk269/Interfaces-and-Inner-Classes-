@@ -29,7 +29,7 @@ public class Baguette implements Recipe {
     }
 
     @Override public Double getRemainingSecondsUntilDone() {
-        return timeLeftSeconds;
+        return this.timeLeftSeconds;
     }
 
     @Override public void adjust(Time unit, int amount, int ovenTemperature) {
